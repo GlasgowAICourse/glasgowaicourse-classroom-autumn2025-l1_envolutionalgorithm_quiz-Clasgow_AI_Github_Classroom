@@ -31,4 +31,4 @@ jobs:
       # This step only runs if the grading step completes, even if it fails
       if: always()
       with:
-        runners: run_test.py
+        runners: run_test
