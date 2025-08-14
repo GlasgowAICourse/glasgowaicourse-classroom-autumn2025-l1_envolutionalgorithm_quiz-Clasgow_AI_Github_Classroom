@@ -25,9 +25,11 @@ jobs:
           points: 10
           # Timeout in minutes
           timeout: 5
+      # 3. Report the results back to GitHub Classroom
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
-      env:
-        RUN_TEST_RESULTS: "${{steps.run_test.outputs.result}}"
+      # This step only runs if the grading step completes, even if it fails
+      if: always()
       with:
-        runners: run_test
+        # The `grading-results` input expects the JSON output from the previous step
+        grading-results: ${{ steps.run_test.outputs.result }}
