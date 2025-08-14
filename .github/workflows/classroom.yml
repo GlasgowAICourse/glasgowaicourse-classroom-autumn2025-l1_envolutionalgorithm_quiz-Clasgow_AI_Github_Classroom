@@ -29,7 +29,6 @@ jobs:
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       # This step only runs if the grading step completes, even if it fails
-      env:
-        RUN_TEST_RESULTS: "${{steps.run_test.outputs.result}}"
+      if: always()
       with:
         runners: run_test.py
