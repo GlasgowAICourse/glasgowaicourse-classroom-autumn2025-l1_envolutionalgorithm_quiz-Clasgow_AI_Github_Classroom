@@ -20,9 +20,9 @@ jobs:
           # Command to install necessary libraries
           setup-command: 'pip install nbformat'
           # Command to run your test script
-          run-command: 'python run_test.py'
+          entryPoint: 'python run_test.py'
           # Max points for this test
-          points: 10
+          max-score: 10
           # Timeout in minutes
           timeout: 5
       # 3. Report the results back to GitHub Classroom
