@@ -13,23 +13,18 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    - name: Run_test
-      id: run_test
-      uses: classroom-resources/autograding-python-grader@v1
+    - name: First
+      id: first
+      uses: classroom-resources/autograding-command-grader@v1
       with:
-          # Command to install necessary libraries
-          setup-command: 'pip install nbformat'
-          # Command to run your test script
-          entryPoint: 'python run_test.py'
-          # Max points for this test
-          max-score: 10
-          # Timeout in minutes
-          timeout: 5
-      # 3. Report the results back to GitHub Classroom
+        test-name: First
+        setup-command: pip install nbformat
+        command: python ./run_test.py
+        timeout: 10
+        max-score: 10
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
-      # This step only runs if the grading step completes, even if it fails
       env:
-        RUN_TEST: "${{steps.run_test.outputs.result}}"
+        FIRST_RESULTS: "${{steps.first.outputs.result}}"
       with:
-        runners: run_test
+        runners: first
