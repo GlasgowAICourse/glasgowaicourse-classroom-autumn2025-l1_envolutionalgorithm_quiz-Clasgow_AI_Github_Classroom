@@ -32,4 +32,4 @@ jobs:
       if: always()
       with:
         # The `grading-results` input expects the JSON output from the previous step
-        grading-results: ${{ steps.run_test.outputs.result }}
+        runners: ${{ steps.run_test.outputs.result }}
